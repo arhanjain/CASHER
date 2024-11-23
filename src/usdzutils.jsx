@@ -6,7 +6,7 @@ import { wgsl } from 'three/webgpu';
 import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 
 
-const usdzLoader = new USDZLoader();
+const usdzLoader = new USDZLoader(`${import.meta.env.BASE_URL}`);
 
 export class USDZScene {
   constructor() {
@@ -100,7 +100,8 @@ export class USDZScene {
   async loadJSON() {
     try {
        // Fetch the JSON file
-      const response = await fetch('../src/public_release/obj2sink_2.json'); // Adjust path as needed
+      // const response = await fetch('/public_release/obj2sink_2.json'); // Adjust path as needed
+      const response = await fetch(`${import.meta.env.BASE_URL}public_release/obj2sink_2.json`);
       // Check for response errors
       if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -127,7 +128,7 @@ export class USDZScene {
     await this.loadJSON() 
      
     // Load your file. File is of type File
-    const response = await fetch('../src/public_release/usd/obj2sink_2.usdz');
+    const response = await fetch(`${import.meta.env.BASE_URL}public_release/usd/obj2sink_2.usdz`);
     const blob = await response.blob();
      const file = new File([blob], 'test.usdz', {
       type: 'model/vnd.usdz+zip',  // MIME type for USDZ
@@ -137,7 +138,7 @@ export class USDZScene {
     const loadedModel = await usdzLoader.loadFile(file, env);
     console.log("REACHED")
 
-    const response2 = await fetch('../src/public_release/usd/franka.usdz');
+    const response2 = await fetch(`${import.meta.env.BASE_URL}/src/public_release/usd/franka.usdz`);
     const blob2 = await response2.blob();
      const file2 = new File([blob2], 'test2.usdz', {
       type: 'model/vnd.usdz+zip',  // MIME type for USDZ
