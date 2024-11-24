@@ -138,7 +138,7 @@ export class USDZScene {
     const loadedModel = await usdzLoader.loadFile(file, env);
     console.log("REACHED")
 
-    const response2 = await fetch(`${import.meta.env.BASE_URL}src/public_release/usd/franka.usdz`);
+    const response2 = await fetch(`${import.meta.env.BASE_URL}public_release/usd/franka.usdz`);
     const blob2 = await response2.blob();
      const file2 = new File([blob2], 'test2.usdz', {
       type: 'model/vnd.usdz+zip',  // MIME type for USDZ
