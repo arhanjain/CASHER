@@ -36,7 +36,7 @@ console.log("serviceWorker")
 console.log('serviceWorker' in navigator)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}/service-worker.js`)
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}coi-serviceworker.js`)
     .then(registration => {
       console.log('SW registered: ', registration)
     }).catch(registrationError => {
